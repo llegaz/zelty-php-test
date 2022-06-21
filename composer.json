@@ -1,0 +1,65 @@
+{
+    "name": "llegaz/zelty",
+    "description": "PHP project for technical test purpose",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laurent LEGAZ",
+            "email": "laurent@legaz.eu",
+            "homepage": "http://laurent.legaz.eu/"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-pdo": "^7.4",
+        "ext-json": "*",
+        "slim/slim": "^4.10",
+        "guzzlehttp/psr7": "^2.3",
+        "php-di/slim-bridge": "^3.2",
+        "doctrine/orm": "^2.12",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.13",
+        "ramsey/uuid": "^4.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.5",
+        "symfony/var-dumper": "~5.4",
+        "friendsofphp/php-cs-fixer": "~3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "LLegaz\\ZeltyPhpTest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LLegaz\\ZeltyPhpTest\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "pu":"@phpunit",
+        "puv":"@phpunit-verbose",
+        "cs":"@phpcsfixer",
+        "gm":"@generate-mapping",
+        "ge":"@generate-entities",
+        "gall":[
+            "@generate-mapping",
+            "@generate-entities"
+        ],
+        "vm":"@validate-mapping",
+        "phpunit" : "./vendor/bin/phpunit --colors=always --configuration ./phpunit.xml",
+        "phpunit-verbose" : "./vendor/bin/phpunit --colors=always --configuration ./phpunit.xml -vvv",
+        "phpcsfixer": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff -vvv",
+        "generate-mapping": [
+            "[ -d src/Entities/test ] || mkdir src/Entities/test/",
+            "@php src/DevTools/doctrineConsole.php orm:convert-mapping -f --from-database annotation src/Entities/test/"
+        ],
+        "generate-entities": "@php src/DevTools/doctrineConsole.php orm:generate-entities --generate-annotations=true --generate-methods=true  -vvv src/Entities/test/",
+        "validate-mapping": "@php src/DevTools/doctrineConsole.php orm:validate-schema -vvv"
+    },
+    "scripts-descriptions": {
+        "pu": "Run all PHPUnit based tests",
+        "cs": "Clean the sources"
+    }
+}
