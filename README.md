@@ -24,7 +24,7 @@ Digest username="thierry", realm="zelty.fr", uri="/login", qop="auth", nonce="43
 ```
 Authorization: Bearer ZWQyZDNmYzcxNDI3YTVlODE1MDZjNjZlNGNiYTNjMjZmZGVhNzVjNzQ2ZWE
 ```
-Note:  You can add your credentials using `src/DevTools/importDataFixtures.php` (don't forget to run the script again).
+Note:  You can add your credentials using `src/DevTools/importDataFixtures.php` (don't forget to run the script again).  <br/>
 Note2: I decided to couple Token based Authentication (RFC6750) to HTTP Digest (RFC7616) for performances purposes.  <br/>
 For more information about authentication, please refer [AUTHENTICATION.md](src/Authentication/AUTHENTICATION.md) document.
 <br/>
