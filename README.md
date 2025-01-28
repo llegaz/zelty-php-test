@@ -31,6 +31,7 @@ For more information about authentication, please refer [AUTHENTICATION.md](src/
 <br/>
 ### cURL examples
 
+Here we try to login with "Julie de Zelty" 's credentials (don't forget to read previous steps):
 ```bash
 curl -H "Authorization: Digest username=\"juju\", \
 realm=\"zelty.fr\", \
@@ -51,6 +52,8 @@ curl -H "Authorization: Bearer NWYxMGE0OTRiYmFlMTczZTk4OTJjNzI1M2FmYjc4MmVkOGMwM
 curl -H "Authorization: Bearer NWYxMGE0OTRiYmFlMTczZTk4OTJjNzI1M2FmYjc4MmVkOGMwMWQ5OGEwYmM=" localhost:8080/articles
 ```
 
+<br/>
+<br/>
 ## Basic API usage
 `GET`   -                  `http(s)://hots:port`  `/`
 <br/>
