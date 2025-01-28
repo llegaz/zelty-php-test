@@ -2,7 +2,7 @@
 For installation information please refer to [DEPLOYMENT.md](DEPLOYMENT.md) document.
 
 ## Authentication process flow
-With your favorite API client (personally I use Postman or cURL).
+With your favorite API client (personally I recommend cURL).
 
 1. Connect to any endpoints of the API.
 2. use `WWW-Authenticate` API response's headers combined with PHP tool `php src/DevTools/authenticationHelper.php` fom the app.
@@ -29,6 +29,27 @@ Note2: I decided to couple Token based Authentication (RFC6750) to HTTP Digest (
 For more information about authentication, please refer [AUTHENTICATION.md](src/Authentication/AUTHENTICATION.md) document.
 <br/>
 <br/>
+### cURL examples
+
+```bash
+curl -H "Authorization: Digest username=\"juju\", \
+realm=\"zelty.fr\", \
+uri=\"/login\", \
+nonce=\"a5aa3b538f4ece7880c8fc994e74544fc90fc1dd8b483d95\", \
+nc=00000001, \
+cnonce=\"21950c85fbebd31fc353a96fbc41bdfd1aace7be5bac5613\", \
+qop=auth, \
+opaque=\"218de4a8abefd1a8f9294bcfd9e9c94b\", \
+response=\"b286319489ec31037c8d2a65f287cd4c356a8993d0e2527c91b51791380b9170\" \
+" -v localhost:8080/login 
+```
+
+```bash
+curl -H "Authorization: Bearer NWYxMGE0OTRiYmFlMTczZTk4OTJjNzI1M2FmYjc4MmVkOGMwMWQ5OGEwYmM=" localhost:8080/login
+```
+```bash
+curl -H "Authorization: Bearer NWYxMGE0OTRiYmFlMTczZTk4OTJjNzI1M2FmYjc4MmVkOGMwMWQ5OGEwYmM=" localhost:8080/articles
+```
 
 ## Basic API usage
 `GET`   -                  `http(s)://hots:port`  `/`
