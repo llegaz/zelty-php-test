@@ -18,6 +18,7 @@ use LLegaz\ZeltyPhpTest\Helpers\Queries\QueryFilter;
 use LLegaz\ZeltyPhpTest\Helpers\Queries\QueryFilterAND;
 use LLegaz\ZeltyPhpTest\Helpers\Queries\QueryFilterOR;
 use LLegaz\ZeltyPhpTest\Utils as ZU;
+
 use function count;
 use function explode;
 use function is_int;
@@ -192,8 +193,7 @@ class ArticlesRepository extends BaseRepository
                     '?page=' . ($this->getPage() + 1) .
                     '&perPage=' . $this->getPerPage() .
                     ($this->getRenderHTML() ? '&renderHTML=yes' : '') .
-                    (strlen($this->getFilters()) ? '&filters=' . ZU::sanitizeUrl($this->getFilters()) : '')
-            ;
+                    (strlen($this->getFilters()) ? '&filters=' . ZU::sanitizeUrl($this->getFilters()) : '');
         }
 
         if ($this->getPage() > 1) {
@@ -204,8 +204,7 @@ class ArticlesRepository extends BaseRepository
                     '?page=' . ($this->getPage() - 1) .
                     '&perPage=' . $this->getPerPage() .
                     ($this->getRenderHTML() ? '&renderHTML=yes' : '') .
-                    (strlen($this->getFilters()) ? '&filters=' . ZU::sanitizeUrl($this->getFilters()) : '')
-            ;
+                    (strlen($this->getFilters()) ? '&filters=' . ZU::sanitizeUrl($this->getFilters()) : '');
         }
 
         $articles['totalItems'] = $totalItems;
@@ -216,7 +215,7 @@ class ArticlesRepository extends BaseRepository
     /**
      * We handle only very simple filters for now
      *
-     * @throws \LLegaz\ZeltyPhpTest\Exceptions\NotSupportedException
+     * @throws NotSupportedException
      */
     private function handleFilters(): void
     {
@@ -258,7 +257,7 @@ class ArticlesRepository extends BaseRepository
             $this->qb->expr()->like($queryFilter->getKey(), ':like')
         )
             ->setParameter('like', '%' . $queryFilter->getValue() . '%', Types::STRING)
-            ;
+        ;
     }
 
     private function addAndWhere(QueryFilterAND $queryFilter): void
@@ -267,12 +266,12 @@ class ArticlesRepository extends BaseRepository
             $this->qb->expr()->like($queryFilter->getLeftOperand()->getKey(), ':like')
         )
             ->setParameter('like', '%' . $queryFilter->getLeftOperand()->getValue() . '%', Types::STRING)
-            ;
+        ;
         $this->qb->andWhere(
             $this->qb->expr()->like($queryFilter->getRightOperand()->getKey(), ':like2')
         )
             ->setParameter('like2', '%' . $queryFilter->getRightOperand()->getValue() . '%', Types::STRING)
-            ;
+        ;
     }
 
     private function addOrWhere(QueryFilterOR $queryFilter): void
@@ -281,12 +280,12 @@ class ArticlesRepository extends BaseRepository
             $this->qb->expr()->like($queryFilter->getLeftOperand()->getKey(), ':like')
         )
             ->setParameter('like', '%' . $queryFilter->getLeftOperand()->getValue() . '%', Types::STRING)
-            ;
+        ;
         $this->qb->orWhere(
             $this->qb->expr()->like($queryFilter->getRightOperand()->getKey(), ':like2')
         )
             ->setParameter('like2', '%' . $queryFilter->getRightOperand()->getValue() . '%', Types::STRING)
-            ;
+        ;
     }
 
     /**

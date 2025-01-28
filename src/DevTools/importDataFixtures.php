@@ -28,6 +28,7 @@ use LLegaz\ZeltyPhpTest\Utils as ZU;
 use LogicException;
 use Throwable;
 use UnexpectedValueException;
+
 use function bin2hex;
 use function microtime;
 use function substr;
@@ -123,7 +124,7 @@ ZU::colorGreenToCLI('Now importing some data fixtures into project DB');
 try {
     $salt = $container->get('auth')->retrieveOpaque(true);
     $em   = $container->get(EntityManager::class);
-    $i    = $usersAdded    = 0;
+    $i    = $usersAdded = 0;
     /**
      * some DEBUG utilities.
      */

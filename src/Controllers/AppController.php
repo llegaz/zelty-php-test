@@ -34,6 +34,7 @@ class AppController extends BaseController
     public function login(Request $request, Response $response, ?User $user = null): Response
     {
         $data = ['token' => null];
+
         // à voir si on garde le state après un redirect
         if ($user && $this->container->get('auth')->hasValidateChallenge()) {
             // create new token per user

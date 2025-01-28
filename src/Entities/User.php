@@ -47,7 +47,7 @@ class User
     private string $passwordSalt;
 
     /**
-     * @var arrayCollection
+     * @var ArrayCollection
      *                      One author has Many Articles
      *
      * @ORM\OneToMany(targetEntity="Article", mappedBy="author")
@@ -135,7 +135,7 @@ class User
     /**
      * Add article.
      *
-     * @param \LLegaz\ZeltyPhpTest\Entities\Article $article
+     * @param Article $article
      *
      * @return User
      */
@@ -149,7 +149,7 @@ class User
     /**
      * Remove article.
      *
-     * @param \LLegaz\ZeltyPhpTest\Entities\Article $article
+     * @param Article $article
      *
      * @return bool TRUE if this collection contained the specified element, FALSE otherwise
      */

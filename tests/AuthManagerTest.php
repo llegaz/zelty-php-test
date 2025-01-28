@@ -6,6 +6,7 @@ namespace LLegaz\ZeltyPhpTest\Tests;
 
 use DI\Container;
 use LLegaz\ZeltyPhpTest\Authentication\AuthenticationManager as SUT;
+
 use function strlen;
 
 /**

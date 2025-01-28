@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityRepository;
 use LLegaz\ZeltyPhpTest\Authentication\TokenStore\TokenStore as SUT;
 use LLegaz\ZeltyPhpTest\Entities\Token;
 use LLegaz\ZeltyPhpTest\Entities\User;
+
 use function base64_decode;
 
 /**

@@ -7,6 +7,7 @@ namespace LLegaz\ZeltyPhpTest\Helpers;
 use GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
 use Slim\Exception\HttpBadRequestException;
+
 use function is_string;
 use function preg_match;
 use function strlen;

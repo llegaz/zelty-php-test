@@ -12,6 +12,7 @@ use LLegaz\ZeltyPhpTest\Helpers\InputValidator as IV;
 use LLegaz\ZeltyPhpTest\Helpers\JsonHelper as JH;
 use LLegaz\ZeltyPhpTest\Repositories\ArticlesRepository;
 use Slim\Exception\HttpNotFoundException;
+
 use function filter_var;
 use function strlen;
 
@@ -108,6 +109,7 @@ class ArticleController extends BaseController
     public function readAll(Request $request, Response $response): Response
     {
         $this->setHateoas($request);
+
         // handle URL parameters
         if ($this->isUrlParameters($request)) {
             $page = (int) ($this->getUrlParameter($request, 'page'));

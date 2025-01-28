@@ -15,6 +15,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpUnauthorizedException;
+
 use function array_combine;
 use function explode;
 use function str_replace;
@@ -58,7 +59,7 @@ class HttpAuthenticationHandler implements MiddlewareInterface
     private UsersRepository $userRepository;
 
     /**
-     * @param \LLegaz\ZeltyPhpTest\Handlers\HttpErrorHandler $errorHandler
+     * @param HttpErrorHandler $errorHandler
      */
     public function __construct(
         Container $container,
@@ -113,6 +114,7 @@ class HttpAuthenticationHandler implements MiddlewareInterface
                  */
                 return $this->unauthorized($request, $tokenId . ': token has expired.');
             }
+
             // but if token is not valid, we only respond  with a "401 Unauthorized"
             // status code and a WWW-Authenticate header field against Digest scheme
             return $this->unauthorized($request, $tokenId . ': token is not valid.');
@@ -156,6 +158,7 @@ class HttpAuthenticationHandler implements MiddlewareInterface
             if ($this->container->get('auth')->validateChallenge($response)) {
                 // expires used nonce
                 $this->container->get('auth')->expireNonce($nonce);
+
                 // redirect to /login for authenticated user to get its token
                 return (new AppController($this->container))->login(
                     $request,

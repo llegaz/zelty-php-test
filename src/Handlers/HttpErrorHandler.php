@@ -17,6 +17,7 @@ use Slim\Exception\HttpNotImplementedException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Handlers\ErrorHandler;
 use Throwable;
+
 use function count;
 use function explode;
 use function json_encode;

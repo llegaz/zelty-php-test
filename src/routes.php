@@ -10,6 +10,7 @@ use LLegaz\ZeltyPhpTest\Controllers\AppController;
 use LLegaz\ZeltyPhpTest\Controllers\ArticleController;
 use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
+
 use function preg_match;
 
 /*
@@ -30,14 +31,14 @@ return function (App $app) {
                 ;
             case '/articles/' === $request->getUri()->getPath():
             case preg_match(
-                    // match URI like "/articles?page=3&renderHtml=yes&filters=display_name%20LIKE%20zelty"
-                    '/^\/articles((\/)?(\?){1}(([a-zA-Z]{1,10})(\=){1}([a-z_A-Z%0-9]{1,130})(\&)?){1,4})?$/U',
+                // match URI like "/articles?page=3&renderHtml=yes&filters=display_name%20LIKE%20zelty"
+                '/^\/articles((\/)?(\?){1}(([a-zA-Z]{1,10})(\=){1}([a-z_A-Z%0-9]{1,130})(\&)?){1,4})?$/U',
                 $request->getUri()->getPath()
             ):
                 return $response->withHeader('Access-Control-Allow-Credentials', 'true')
                     ->withAddedHeader('Access-Control-Allow-Methods', 'GET')
                 ;
-            // other endpoints' cases
+                // other endpoints' cases
             case '/login' === $request->getUri()->getPath():
                 return $response->withHeader('Access-Control-Allow-Credentials', 'true')
                     ->withAddedHeader('Access-Control-Allow-Headers', 'Content-type')

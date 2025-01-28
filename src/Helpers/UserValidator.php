@@ -9,6 +9,7 @@ use GuzzleHttp\Psr7\Request;
 use LLegaz\ZeltyPhpTest\Entities\User;
 use LLegaz\ZeltyPhpTest\Repositories\UsersRepository;
 use Slim\Exception\HttpBadRequestException;
+
 use function is_string;
 use function strlen;
 

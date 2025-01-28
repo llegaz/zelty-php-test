@@ -12,6 +12,7 @@ use LLegaz\ZeltyPhpTest\Helpers\JsonHelper as SUT_3;
 use LLegaz\ZeltyPhpTest\Helpers\StringValidator as SUT;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
+
 use function json_encode;
 
 /**

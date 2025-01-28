@@ -17,6 +17,7 @@ use stdClass;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Throwable;
+
 use function call_user_func_array;
 use function htmlentities;
 use function microtime;

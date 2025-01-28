@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManager;
 use LLegaz\ZeltyPhpTest\Entities\Token;
 use LLegaz\ZeltyPhpTest\Entities\User;
 use Throwable;
+
 use function base64_decode;
 use function base64_encode;
 use function bin2hex;

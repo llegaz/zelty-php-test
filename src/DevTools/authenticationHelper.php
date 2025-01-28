@@ -50,27 +50,34 @@ try {
 
     if (isset($argv[1]) && COMMAND_1 === $argv[1]) {
         if (!isset($argv[2]) || '-h' === $argv[2] || '--help' === $argv[2]) {
-            // display command help
-            ZU::colorYellowToCLI('Description:');
-            ZU::nocolorToCLI('  ' . DESCR_1 . PHP_EOL . '  ' . DESCR_2 . ' ' . DESCR_3 . PHP_EOL);
-            ZU::colorYellowToCLI('Usage:');
-            ZU::nocolorToCLI('  ' . COMMAND_1 . ' [options] [<login> <password> <nonce> [<opaque>]]' . PHP_EOL);
-            ZU::colorYellowToCLI('Arguments:');
-            ZU::commandSymfonyStyleToCLI('login', 'The user login without quotes (mandatory)', 18);
-            ZU::commandSymfonyStyleToCLI('password', 'The user password without quotes (mandatory)', 18);
-            ZU::commandSymfonyStyleToCLI('nonce', 'The nonce value without quotes (mandatory)', 18);
-            ZU::commandSymfonyStyleToCLI('opaque', 'The opaque value without quotes (e.g opaque="xxx", where xxx is the opaque value)', 18);
-            ZU::colorYellowToCLI(PHP_EOL . 'Help:');
-            echo '  The ' . ZU::getGreenColoredString(COMMAND_1) . ' is a tool aiming to help in testing API authentication.' . PHP_EOL;
-            echo '  It returns a payload useful with tools like ' . ZU::getGreenColoredString('Postman') . ' or ' . ZU::getGreenColoredString('cURL') . '.' . PHP_EOL . PHP_EOL;
-            echo ZU::getGreenColoredString('  nonce') . ' and ' . ZU::getGreenColoredString('opaque');
-            echo ' arguments are the quoted value present in ';
-            echo ZU::getGreenColoredString('WWW-Authenticate') . ' response header fields.' . PHP_EOL;
-            echo '  Last but not least: pass all those arguments' . ZU::getGreenColoredString(' UNQUOTED !') . PHP_EOL;
-            echo PHP_EOL . '  Example usage: ' . ZU::getGreenColoredString(COMMAND_1);
-            echo ' admin admin_password dbad2031bb412e07dbe547129b370332a6a940659d114b9e c9be4be4a64cea86a1c625f5aab293f3' . PHP_EOL . PHP_EOL;
+            if ($argc > 3) {
+                $argv[2] = $argv[3];
+                $argv[3] = $argv[4];
+                $argv[4] = $argv[5];
+                $argv[5] = $argv[6];
+            } else {
+                // display command help
+                ZU::colorYellowToCLI('Description:');
+                ZU::nocolorToCLI('  ' . DESCR_1 . PHP_EOL . '  ' . DESCR_2 . ' ' . DESCR_3 . PHP_EOL);
+                ZU::colorYellowToCLI('Usage:');
+                ZU::nocolorToCLI('  ' . COMMAND_1 . ' [options] [<login> <password> <nonce> [<opaque>]]' . PHP_EOL);
+                ZU::colorYellowToCLI('Arguments:');
+                ZU::commandSymfonyStyleToCLI('login', 'The user login without quotes (mandatory)', 18);
+                ZU::commandSymfonyStyleToCLI('password', 'The user password without quotes (mandatory)', 18);
+                ZU::commandSymfonyStyleToCLI('nonce', 'The nonce value without quotes (mandatory)', 18);
+                ZU::commandSymfonyStyleToCLI('opaque', 'The opaque value without quotes (e.g opaque="xxx", where xxx is the opaque value)', 18);
+                ZU::colorYellowToCLI(PHP_EOL . 'Help:');
+                echo '  The ' . ZU::getGreenColoredString(COMMAND_1) . ' is a tool aiming to help in testing API authentication.' . PHP_EOL;
+                echo '  It returns a payload useful with tools like ' . ZU::getGreenColoredString('Postman') . ' or ' . ZU::getGreenColoredString('cURL') . '.' . PHP_EOL . PHP_EOL;
+                echo ZU::getGreenColoredString('  nonce') . ' and ' . ZU::getGreenColoredString('opaque');
+                echo ' arguments are the quoted value present in ';
+                echo ZU::getGreenColoredString('WWW-Authenticate') . ' response header fields.' . PHP_EOL;
+                echo '  Last but not least: pass all those arguments' . ZU::getGreenColoredString(' UNQUOTED !') . PHP_EOL;
+                echo PHP_EOL . '  Example usage: ' . ZU::getGreenColoredString(COMMAND_1);
+                echo ' admin admin_password dbad2031bb412e07dbe547129b370332a6a940659d114b9e c9be4be4a64cea86a1c625f5aab293f3' . PHP_EOL . PHP_EOL;
 
-            exit(0);
+                exit(0);
+            }
         }
 
         if (!isset($argv[2])) {

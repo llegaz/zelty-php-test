@@ -7,6 +7,7 @@ namespace LLegaz\ZeltyPhpTest\Handlers;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpInternalServerErrorException;
 use Slim\ResponseEmitter;
+
 use function error_get_last;
 use function ob_clean;
 use function ob_get_length;
@@ -34,7 +35,7 @@ class ShutdownHandler
      * ShutdownHandler constructor.
      *
      * @param Request $request
-     * @param \LLegaz\ZeltyPhpTest\Handlers\HttpErrorHandler $errorHandler
+     * @param HttpErrorHandler $errorHandler
      * @param bool $displayErrorDetails
      */
     public function __construct(Request $request, HttpErrorHandler $errorHandler, bool $displayErrorDetails)

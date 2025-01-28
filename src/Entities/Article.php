@@ -7,6 +7,7 @@ namespace LLegaz\ZeltyPhpTest\Entities;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
+
 use function is_string;
 
 /**

@@ -12,6 +12,7 @@ $container = require __DIR__ . '/bootstrapper.php';
 use LLegaz\ZeltyPhpTest\Utils as ZU;
 use PDO;
 use Throwable;
+
 use function count;
 
 try {

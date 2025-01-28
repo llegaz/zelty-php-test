@@ -12,6 +12,7 @@ use LLegaz\ZeltyPhpTest\Handlers\ShutdownHandler;
 use LLegaz\ZeltyPhpTest\Repositories\UsersRepository;
 use Slim\App;
 use Slim\Middleware\ContentLengthMiddleware;
+
 use function register_shutdown_function;
 
 /*

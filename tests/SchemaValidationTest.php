@@ -12,6 +12,7 @@ namespace LLegaz\ZeltyPhpTest\Tests;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaValidator;
+
 use function count;
 use function implode;
 
@@ -23,7 +24,7 @@ use function implode;
 class SchemaValidationTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     protected $entityManager;
 

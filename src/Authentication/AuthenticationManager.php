@@ -8,6 +8,7 @@ use DI\Container;
 use PDO;
 use Throwable;
 use UnexpectedValueException;
+
 use function bin2hex;
 use function hash_hmac;
 use function hex2bin;
